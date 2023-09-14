@@ -9,5 +9,7 @@ int main()
         "Hello",
         "world",
         "juiceW"};
+
+    cout << msg.at(2) << endl;
     return 0;
 }
