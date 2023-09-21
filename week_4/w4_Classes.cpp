@@ -2,6 +2,9 @@
 #include "Student.h"
 using namespace std;
 
+string Student::emailDomain = "@my.yosemite.edu";
+int Student::Count = 0;
+
 int main()
 {
     Student s1;

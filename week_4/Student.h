@@ -15,11 +15,24 @@ private:
             return false;
         if (email.find(".") > -1)
             return false;
+        if (email.find(emailDomain) == -1)
+            return false;
         return true;
+    }
+    bool isStudentId(string &studentId)
+    {
+        string copy = studentId;
+        if (copy[0] == 'w')
+            copy.erase(0, 1);
+
+        if (studentId.length() != 7)
+            return false;
+        studentId = 'w' + copy;
     }
 
 public:
     static string emailDomain;
+    static int Count;
 
     string getFname() { return fname; }
     void setFname(string fname) { this->fname = fname; }
@@ -35,6 +48,7 @@ public:
 
     Student()
     {
+        Count += 1;
     }
     Student(string fname, string lname, string email, string studentId)
     {
@@ -42,6 +56,7 @@ public:
         this->lname = lname;
         this->email = email;
         this->studentId = studentId;
+        Count += 1;
     }
     // Copy Constructor for the student class
     Student(const Student &s)
@@ -50,6 +65,7 @@ public:
         this->lname = s.lname;
         this->email = s.email;
         this->studentId = s.studentId;
+        Count += 1;
     }
     // Copy of the copy (shallow copy) changes everything but the studentId
     Student(const Student &s, string studentId)
@@ -58,6 +74,10 @@ public:
         this->lname = s.lname;
         this->email = s.email;
         this->studentId = studentId;
+        Count += 1;
     }
-    ~Student(){};
+    ~Student()
+    {
+        Count -= 1;
+    };
 };
