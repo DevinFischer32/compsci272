@@ -19,6 +19,7 @@ private:
             return false;
         return true;
     }
+
     bool isStudentId(string &studentId)
     {
         string copy = studentId;
@@ -27,7 +28,15 @@ private:
 
         if (studentId.length() != 7)
             return false;
+
+        for (int i = 0; i < studentId.length(); i++)
+        {
+            if (!isdigit(studentId[i]))
+                return false;
+        }
+
         studentId = 'w' + copy;
+        return true;
     }
 
 public:
