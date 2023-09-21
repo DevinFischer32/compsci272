@@ -89,4 +89,9 @@ public:
     {
         Count -= 1;
     };
+
+    string toString()
+    {
+        return "\nFirst name:" + fname + "\nLast Name:" + lname + "\nEmail:" + email + "\nStudentId" + studentId;
+    }
 };
