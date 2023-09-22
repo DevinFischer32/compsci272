@@ -10,6 +10,7 @@ int main()
 {
     vector<Student> students;
     Student s1;
+    s1.address.City = "Modesto";
     Student s2("John", "Doe", "johndoe@gmail.com", "944817");
     Student s3(s2);
     Student s4(s2, "123");
@@ -21,7 +22,7 @@ int main()
 
     for (auto student : students)
     {
-        cout << student.getFname() << " " << student.getLname() << endl;
+        cout << student.toString() << endl;
     }
 
     return 0;

@@ -2,6 +2,15 @@
 #include <iostream>
 using namespace std;
 
+class Address
+{
+public:
+    string Street = "";
+    string City = "";
+    string State = "";
+    string Zip = "";
+};
+
 class Student
 {
 private:
@@ -43,7 +52,10 @@ public:
     static string emailDomain;
     static int Count;
 
-    string getFname() { return fname; }
+    Address address;
+
+    string
+    getFname() { return fname; }
     void setFname(string fname) { this->fname = fname; }
     string getLname() { return lname; }
     void setLname(string lname) { this->lname = lname; }
@@ -55,15 +67,19 @@ public:
             this->email = email;
     }
 
+    string getStudentId() { return studentId; }
+    void setStudentId(string studentId) { this->studentId = studentId; }
+
     Student()
     {
         Count += 1;
     }
     Student(string fname, string lname, string email, string studentId)
     {
-        this->fname = fname;
-        this->lname = lname;
-        this->email = email;
+        // Uses the setter to assign the value; makes it where you can validate before the assignment.
+        this->setFname(fname);
+        this->setLname(lname);
+        this->setEmail(email);
         this->studentId = studentId;
         Count += 1;
     }
@@ -91,7 +107,8 @@ public:
     };
 
     string toString()
+    // Dont use cout as it would tie this function to the terminal. Doing it this way allows for usablitiy in different areas.
     {
-        return "\nFirst name:" + fname + "\nLast Name:" + lname + "\nEmail:" + email + "\nStudentId" + studentId;
+        return "\nFirst name: " + fname + "\nLast Name: " + lname + "\nEmail: " + email + "\nStudentId: " + studentId;
     }
 };
